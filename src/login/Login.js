@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { useNavigate } from "react-router-dom";
-import {FromLog} from "../Home";
+import { useNavigate} from "react-router-dom";
+
 
 
 function Login(props) {
@@ -19,7 +19,9 @@ function Login(props) {
                     alert('Please Enter Valid Email')
                 }else {
                     if(resp.password === password){
+                        localStorage.setItem('token', username)
                         navigate('/home')
+
                     }else{
                         alert('Please Enter Valid Password')
                     }
@@ -47,8 +49,8 @@ function Login(props) {
 
 
     return (
-        <div style={{textAlign: 'center'}}>
-            <FromLog info={username}/>
+        <div style={{textAlign: "center"}}>
+
             <h1>React Project Media</h1>
             <form onSubmit={ProceedLogin} className="container" >
                 <input value={username} onChange={(e) => {userupdate(e.target.value)}} type="text"/>

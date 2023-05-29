@@ -7,20 +7,24 @@ import { useNavigate } from 'react-router-dom';
 function Create() {
     const [inputData, setInputData] = useState({
         title: '',
-        body: ''
+        body: '',
+        creator: localStorage.getItem('token')
     })
     const navigate = useNavigate();
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post('http://localhost:3002/post', inputData)
         .then(res => {
             alert("Data Posted Successfully!")
+
             navigate('/home')
         })
     }
   return (
     <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
+
         <div className='w-50 border bg-secondary text-white p-5'>
             <form onSubmit={handleSubmit}>
                 <div>
